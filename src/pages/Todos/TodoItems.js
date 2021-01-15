@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Title = styled.div`
     font-size: 20px;
-  color: #08c;
+  color: #ff5252;
   padding: 20px 0;
   &.completed{
     color: #777;
