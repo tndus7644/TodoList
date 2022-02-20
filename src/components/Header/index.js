@@ -1,17 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import {AiOutlineMenu} from "react-icons/ai";
-import {useHistory} from 'react-router-dom';
+import {useHistory} from "react-router";
+import {useSelector} from "react-redux";
+import Member from "./Member";
+import {useActionCreators} from "../../redux/actionCreators";
 
-const Header = ({onClickMenu}) => {
+const Header = () => {
 
     const history = useHistory();
 
     const navigate = (url) => {
-        history.push(url);
+        history.push(url)
     }
 
-    return(
+    const {appActions} = useActionCreators();
+
+    const {sidebar} = useSelector(state => state.app);
+
+
+    const handleSidebar = () => {
+        appActions.updateState({
+            sidebar:!sidebar
+        })
+    }
+
+    return (
         <Container>
             <Logo>Logo</Logo>
             <Gnb>
@@ -28,8 +42,9 @@ const Header = ({onClickMenu}) => {
                     <NavItem onClick={() => navigate("/videos")}>
                         Videos
                     </NavItem>
+                    <Member/>
                 </Nav>
-                <Button onClick={onClickMenu}>
+                <Button onClick={handleSidebar}>
                     <AiOutlineMenu/>
                 </Button>
             </Gnb>

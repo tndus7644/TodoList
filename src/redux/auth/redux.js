@@ -1,12 +1,11 @@
 const initialState = {
-    sidebar: false,
-    photos: [],
-    searchResult: {}
+    isLoggedIn: false,
+    profileObj: undefined
 }
 
 export const Action = {
     Types: {
-        UPDATE_STATE: 'APP/UPDATE_STATE'
+        UPDATE_STATE: 'AUTH/UPDATE_STATE'
     },
     Creators: {
         updateState: (props) => ({
